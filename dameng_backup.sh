@@ -9,7 +9,7 @@
 
 # 1. 定义变量（这里只放了部分范例非真实数据，取自项目报告书片段）
 DB_USER="SYSDBA"
-DB_PASSWORD="MyPassword123" # 注意：真实环境中应使用密码管理器或配置文件，不要硬编码！
+DB_PASSWORD="MyPassword123" 
 DB_HOST="localhost"
 DB_PORT="5236"
 DB_NAME="DAMENG"
@@ -39,7 +39,7 @@ else
     exit 1
 fi
 
-# 5. 清理过期备份文件（可选，但很重要）
+# 5. 清理过期备份文件
 echo "$(date): 开始清理 ${DAYS_TO_KEEP} 天前的备份文件..." | tee -a $LOG_FILE
 find $BACKUP_DIR -name "logic_backup_${DB_NAME}_*.dmp" -mtime +$DAYS_TO_KEEP -delete
 find $BACKUP_DIR -name "backup_log_*.txt" -mtime +$DAYS_TO_KEEP -delete
